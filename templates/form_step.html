@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Step {{ step }} of 3</h2>
+
+  <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {% if step == 1 %}
+      <fieldset class="import-box">
+        <legend>Import data (optional)</legend>
+        <label>LinkedIn public profile URL<br><input name="linkedin_url" value="{{ data.get('linkedin_url','') }}" placeholder="https://www.linkedin.com/in/your-profile"></label>
+        <label>Paste existing resume text<br>
+          <textarea name="resume_text" placeholder="Copy and paste your resume or profile text here">{{ data.get('resume_text','') }}</textarea>
+        </label>
+        <p class="hint">Use either field to auto-fill the form below, then review and edit the results.</p>
+      </fieldset>
+
+      <label>Full name<br><input name="full_name" value="{{ data.get('full_name','') }}" required></label>
+      <label>Email<br><input name="email" value="{{ data.get('email','') }}" required></label>
+      <label>Phone<br><input name="phone" value="{{ data.get('phone','') }}"></label>
+      <label>Professional summary (one-paragraph)<br>
+        <textarea name="summary">{{ data.get('summary','') }}</textarea>
+      </label>
+    {% elif step == 2 %}
+      <label>Education (each line a record)<br>
+        <textarea name="education">{{ data.get('education','') }}</textarea>
+      </label>
+      <label>Experience (each line a bullet or entry)<br>
+        <textarea name="experience">{{ data.get('experience','') }}</textarea>
+      </label>
+      <label>Projects / Achievements (each line)<br>
+        <textarea name="projects">{{ data.get('projects','') }}</textarea>
+      </label>
+    {% else %}
+      <label>Skills (comma separated)<br>
+        <input name="skills" value="{{ data.get('skills','') }}">
+      </label>
+      <label>Template style<br>
+        <select name="template">
+          <option value="classic" {% if data.get('template','classic')=='classic' %}selected{% endif %}>Classic</option>
+          <option value="modern" {% if data.get('template')=='modern' %}selected{% endif %}>Modern</option>
+          <option value="professional" {% if data.get('template')=='professional' %}selected{% endif %}>Professional</option>
+          <option value="minimal" {% if data.get('template')=='minimal' %}selected{% endif %}>Minimal</option>
+        </select>
+      </label>
+    {% endif %}
+
+    <div class="actions">
+      {% if step > 1 %}
+        <a class="btn" href="{{ url_for('step', step=step-1) }}">Back</a>
+      {% endif %}
+      <button class="btn" type="submit">{% if step < 3 %}Next{% else %}Generate Resume{% endif %}</button>
+    </div>
+  </form>
+
+{% endblock %}

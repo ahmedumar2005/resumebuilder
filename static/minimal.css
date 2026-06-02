@@ -1,0 +1,9 @@
+/* Minimal style */
+.resume{font-family:Inter,system-ui,Helvetica,Arial,sans-serif;color:#111}
+.resume{border:none;padding:20px}
+.resume .header h2{font-size:28px;margin-bottom:4px}
+.resume .contact{color:#555;font-size:0.95rem}
+.resume h3{font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:#777;margin-top:28px;margin-bottom:10px}
+.resume .body{color:#333;line-height:1.6}
+.resume section{border-bottom:1px solid #eee;padding-bottom:12px}
+.resume section:last-child{border-bottom:none}

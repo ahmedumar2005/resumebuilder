@@ -1,0 +1,21 @@
+# render.yaml — Render service definition for Render
+# NOTE: The `SECRET_KEY` entry below is a placeholder. Do NOT commit secrets to
+# source control. In the Render dashboard, set `SECRET_KEY` as a secret or an
+# environment variable (Edit service → Environment → Environment Variables).
+services:
+  - type: web
+    name: resume-builder
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120 --access-logfile - --log-file -
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: SECRET_KEY
+        value: replace-with-render-dashboard-secret

@@ -1,0 +1,8 @@
+Flask>=2.0
+MarkupSafe>=2.0
+requests>=2.0
+beautifulsoup4>=4.0
+# Optional: WeasyPrint for server-side PDF export (requires system dependencies)
+# WeasyPrint>=57.0
+Flask-WTF>=1.0
+gunicorn>=20.0

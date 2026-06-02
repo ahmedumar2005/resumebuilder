@@ -1,0 +1,28 @@
+name: Smoke Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_url:
+        description: 'URL to run smoke tests against (optional). If not set, uses repo secret SMOKE_URL.'
+        required: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run smoke test script
+        run: |
+          URL_INPUT="${{ github.event.inputs.smoke_url }}"
+          if [ -z "$URL_INPUT" ]; then
+            URL_INPUT="${{ secrets.SMOKE_URL }}"
+          fi
+          if [ -z "$URL_INPUT" ]; then
+            echo "No URL provided via workflow input or SMOKE_URL secret. Aborting."
+            exit 1
+          fi
+          chmod +x ./scripts/smoke_test.sh
+          ./scripts/smoke_test.sh "$URL_INPUT"

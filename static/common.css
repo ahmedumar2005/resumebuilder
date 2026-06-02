@@ -1,0 +1,28 @@
+:root{--bg:#f7f7f9;--accent:#1f4f8b;--text:#111}
+body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0}
+.container{max-width:900px;margin:30px auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:18px;margin:0}
+nav a{color:var(--accent);text-decoration:none}
+.flash-messages{margin:16px 0;display:flex;flex-direction:column;gap:8px}
+.flash{padding:12px 14px;border-radius:6px;font-size:0.95rem}
+.flash.error{background:#ffe6e6;color:#9a1a1a;border:1px solid #f1a5a5}
+.flash.warning{background:#fff4d9;color:#7f5c00;border:1px solid #f2d489}
+form label{display:block;margin:12px 0}
+form input, form select, form textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px}
+textarea{min-height:90px}
+.hint{color:#555;font-size:0.95rem;margin:8px 0 0}
+.import-box{border:1px solid #ddd;padding:14px;border-radius:6px;background:#fff}
+.import-box legend{font-weight:700}
+.actions{margin-top:16px}
+.actions-inline{display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:8px 12px;text-decoration:none;border-radius:4px;border:none;cursor:pointer}
+
+/* resume container base */
+.resume{background:#fff;padding:24px;border-radius:6px}
+.resume .header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.resume .header h2{margin:0}
+.resume section{margin-top:16px}
+.resume h3{margin:0 0 8px 0}
+.resume .body p{margin:6px 0}
+.resume .contact{color:#666}

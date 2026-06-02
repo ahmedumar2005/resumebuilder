@@ -1,0 +1,8 @@
+/* Professional style */
+.resume{font-family:Trebuchet MS,Segoe UI,Arial,sans-serif;color:#1c1c1c}
+.resume{border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.resume .header{background:#f3f7fb;padding:20px;border-radius:6px 6px 0 0}
+.resume .header h2{font-size:32px;margin:0}
+.resume .contact{font-size:0.95rem;letter-spacing:.02em}
+.resume h3{color:#2b6cb0;font-size:14px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #e2e8f0;padding-bottom:6px}
+.resume .body{line-height:1.7;color:#323232}

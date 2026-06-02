@@ -1,0 +1,5 @@
+/* Modern style */
+.resume{font-family:Inter,system-ui,Helvetica,Arial,sans-serif}
+.resume .header{display:flex;justify-content:space-between;align-items:center;background:#fafafa;padding:12px;border-radius:6px}
+.resume h3{color:#333;text-transform:uppercase;font-size:12px;letter-spacing:0.08em}
+.resume .body{color:#333}

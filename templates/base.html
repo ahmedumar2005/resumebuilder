@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Auto Resume Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Automatic Resume Builder</h1>
+        <nav><a href="/reset">Start Over</a></nav>
+      </header>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages" role="status" aria-live="polite">
+            {% for category, message in messages %}
+              <div class="flash {{ category }}" role="alert">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer>
+        <small>Generated with the Automatic Resume Builder</small>
+    <script>
+      // Focus management: move focus to first error flash or to the first input
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          var err = document.querySelector('.flash.error');
+          if (err) {
+            err.setAttribute('tabindex','-1');
+            err.focus();
+            return;
+          }
+          var firstInput = document.querySelector('input, textarea, select');
+          if (firstInput) firstInput.focus();
+        } catch (e) { /* noop */ }
+      });
+    </script>
+      </footer>
+    </div>
+  </body>
+</html>

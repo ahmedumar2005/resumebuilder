@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+  {% set selected = data.get('template','classic') %}
+  {% if selected == 'modern' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern.css') }}">
+  {% elif selected == 'professional' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='professional.css') }}">
+  {% elif selected == 'minimal' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='minimal.css') }}">
+  {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='classic.css') }}">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="resume">
+    <div class="header">
+      <div>
+        <h2>{{ data.get('full_name','') }}</h2>
+        <div class="contact">{{ data.get('email','') }} • {{ data.get('phone','') }}</div>
+      </div>
+      <div class="actions-inline">
+        <button class="btn" onclick="window.print(); return false;">Print / Save PDF</button>
+        <a class="btn" href="/resume/pdf">Download PDF</a>
+      </div>
+    </div>
+
+    <section>
+      <h3>Summary</h3>
+      <div class="body">{{ data.get('summary','')|safe }}</div>
+    </section>
+
+    <section>
+      <h3>Experience & Projects</h3>
+      <div class="body">
+        {{ data.get('experience','')|safe }}
+        {{ data.get('projects','')|safe }}
+      </div>
+    </section>
+
+    <section>
+      <h3>Education</h3>
+      <div class="body">{{ data.get('education','')|safe }}</div>
+    </section>
+
+    <section>
+      <h3>Skills</h3>
+      <div class="body">{{ data.get('skills','') }}</div>
+    </section>
+
+    <p><a href="/">Edit</a> • <a href="/reset">Start Over</a></p>
+  </div>
+{% endblock %}
