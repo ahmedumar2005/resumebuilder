@@ -36,7 +36,6 @@ jobs:
           pip install -r requirements.txt
           pip install black flake8
 
-      ```yaml
    - name: Format code with black
      run: |
        pip install black
